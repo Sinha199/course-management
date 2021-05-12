@@ -13,6 +13,7 @@ app.listen(process.env.PORT, (err, addr) => {
         app.log.error(err);
         process.exit(1);
     }
+    app.register(require('./src/routes/course'));
 
     app.log.info(`Your server is listening on port ${process.env.PORT} 🧨`);
 });
