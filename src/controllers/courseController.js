@@ -10,6 +10,7 @@ const getSpecificCourses = async(req,res) =>{
     const course = await client.query('SELECT * FROM mydb.courses WHERE id = "${req.params.id}"');
     res.send({course});
 };
+
 module.exports = {
     getCourses,
 }
