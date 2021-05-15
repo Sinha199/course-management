@@ -20,10 +20,35 @@ const deleteCourse = async(req,res) =>{
 }
 
 const addCourse = async(req,res) =>{
-    
-}
+    const allProperties = Object.keys(req.body).length;
+    if(allProperties!=4)
+    {
+        res.code(400)({
+            error: 'Some properties are missing. Add the name , description , author , link'
+        });
+        return;
+    }
+    try {
+        const newCourse = await client.insert({
+            table:'courses',
+            records:[
+                {
+                    name:req.body.name,
+                    description:req.body.description,
+                    author:req.body.author,
+                    link:req.body.link
+                }
+            ]
+        });
+        res.send({newCourse});
+    } catch (error) {
+        res.send({error});
+    }
+};
 module.exports = {
     getCourses,
     getSpecificCourses,
     deleteCourse,
+    addCourse,
+    editCourse
 }
