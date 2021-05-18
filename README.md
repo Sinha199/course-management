@@ -1,2 +1,2 @@
-Building a REST API with Fastify and Harper
+A REST API with Fastify and Harper
 
